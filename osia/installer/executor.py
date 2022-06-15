@@ -36,7 +36,7 @@ def execute_installer(installer, base_path, operation, os_image=None):
     if os_image is not None and os_image:
         additional_env = environ.copy()
         additional_env.update({'OPENSHIFT_INSTALL_OS_IMAGE_OVERRIDE': os_image})
-    with Popen([installer, operation, 'cluster', '--dir', base_path],
+    with Popen([installer, operation, 'cluster'],
                env=additional_env, universal_newlines=True) as proc:
         proc.wait()
         if proc.returncode != 0:
